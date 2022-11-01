@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/signup.css" />
+  <link rel="stylesheet" type="text/css" href="../static/css/classes.css" />
+</head>
+<body>
+  <div class="side-bar">
+    <div onclick="window.location.pathname = ('/')" style="cursor: pointer">
+      <img src="../static/img/schedule.png" />
+      <div>Check-In</div>
+    </div>
+  </div>
+  <div class="main register_main">
+    <div class="sign_up">
+      <div class="sign_up-top">Login</div>
+      <form method="POST">
+        <input type="text" name="username" placeholder="Username" />
+        <input type="password" name="password" placeholder="Password" />
+        <button type="submit">Continue</button>
+      </form>
+    </div>
+  </div>
+  <script src="../static/js/base.js"></script>
+</body>
+</html>
