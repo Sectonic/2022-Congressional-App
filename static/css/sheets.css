@@ -1,0 +1,112 @@
+.sheets_nav {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 45%;
+  height: 50px;
+  border-radius: 20px;
+  margin-left: 15px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+  padding: 10px 50px;
+}
+
+.sheets_nav * {
+  width: 30%;
+  text-align: center;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.507);
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.sheets_data {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.sheets_attendance {
+  width: 70%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 87vh;
+  margin-left: 15px;
+  border-radius: 20px;
+  overflow: scroll;
+  text-align: center;
+}
+
+th {
+  padding: 20px;
+}
+
+.attendance_body tr:nth-child(odd) {
+  background-color: rgb(243, 243, 243);
+}
+
+.attendance_body tr td {
+  border: none;
+  outline: none;
+  padding: 15px;
+}
+
+.absent {
+  background-color: #ee5a4f;
+  color: white;
+}
+
+.present {
+  background-color: #36dd87;
+  color: white;
+}
+
+.attendance_body tr:nth-child(odd) .present {
+  background-color: #24b46a;
+  color: white;
+}
+
+.attendance_body tr:nth-child(odd) .absent {
+  background-color: #c95148;
+  color: white;
+}
+
+.tardy {
+  background-color: #f0c742;
+  color: white;
+}
+
+.attendance_body tr:nth-child(odd) .tardy {
+  background-color: #cea725;
+  color: white;
+}
+
+table {
+  width: 100%;
+}
+
+.sheets_charts {
+  width: 30%;
+}
+
+.sheets_charts > div {
+  display: block;
+  width: calc(100% - 60px);
+  margin-left: 22.5px;
+  height: 350px;
+  padding: 10px;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#chart_2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.apexcharts-tooltip-marker {
+  background-color: #ee5a4f !important;
+}

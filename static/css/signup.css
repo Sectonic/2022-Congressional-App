@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap");
+body {
+  overflow: hidden;
+  font-family: "Montserrat", sans-serif;
+}
+
+.noSelect {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.side-bar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 200px;
+  background-color: #ee5a4f;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.side-bar img {
+  width: 75px;
+  margin: 0px auto;
+  margin-top: 40px;
+  display: block;
+}
+
+.side-bar div {
+  text-align: center;
+  margin-top: 10px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.main {
+  width: calc(100% - 200px);
+  margin-left: 200px;
+  height: 100vh;
+  position: relative;
+}
+
+.register_main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign_up {
+  width: 400px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sign_up-top {
+  border-radius: 20px 20px 0 0;
+  background-color: #ee5a4f;
+  padding: 20px;
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.sign_up input {
+  outline: none;
+  border: 2px solid transparent;
+  border-bottom: 2px solid #ee5a4f;
+  display: block;
+  margin: 0 auto;
+  font-size: 20px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.timezone_form {
+  width: 72%;
+  outline: none;
+  border: 2px solid transparent;
+  border-bottom: 2px solid #ee5a4f;
+  display: block;
+  margin: 0 auto;
+  font-weight: 500;
+  padding: 10px 20px;
+  margin-top: 20px;
+  transition: 0.3s;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 18px;
+}
+
+.sign_up button {
+  border-radius: 7px;
+  background-color: #ee5a4f;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sign_up button:hover {
+  background-color: #ec473b;
+  transform: scale(1.1);
+}
+
+.nav_el {
+  margin: 0 auto;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav_el:hover {
+  transform: scale(1.15);
+}
+
+.nav_el img {
+  width: 55px;
+  margin: 0 auto;
+  margin-top: 30px;
+  opacity: 0.9;
+}
+
+.nav_el div {
+  margin-top: -3px;
+  font-size: 16px;
+}
+
+.form_textarea {
+  display: block;
+  margin: 0 auto;
+  margin-top: 35px;
+  outline: none;
+  border: 2px solid #ec473b90;
+  border-radius: 20px;
+  padding: 10px;
+  padding-left: 20px;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  width: 53%;
+  height: 100px;
+  resize: vertical;
+}
+
+.pincode_large {
+  font-size: 100px;
+  letter-spacing: 10px;
+  text-align: center;
+}
+
+.pin_change {
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  outline: none;
+  border: none;
+  padding: 10px 30px;
+  font-size: 16px;
+  color: white;
+  background-color: #ee5a4f;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.pin_change:hover {
+  transform: scale(1.1);
+  background-color: #ec473b;
+}
+
+.pincode_container {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+}
+
+.form_flash {
+  margin-top: 15px;
+  width: calc(100% - 30px);
+  margin-left: 15px;
+  border-radius: 20px;
+  padding: 0px 0;
+  color: white;
+  background-color: #ee5a4f;
+  position: relative;
+}
+
+.form_flash-close {
+  font-size: 50px;
+  width: 35px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.form_flash-msg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
