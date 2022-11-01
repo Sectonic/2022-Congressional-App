@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classes</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/signup.css" />
+  <link rel="stylesheet" type="text/css" href="../static/css/classes.css" />
+  <link rel="stylesheet" type="text/css" href="../static/css/time.css" />
+</head>
+
+<body>
+  <div class="popup_bg" id="popup_bg">
+    <div class="new_popup" id="new_popup">
+      <div class="popup_close" onclick="remove_popup(this)">
+        &times;
+      </div>
+      <h1>Add A Class</h1>
+      <form method="POST" id="class_form">
+        <label for="name">Class Name:</label>
+        <input type="text" placeholder="Enter Class Name" name="name">
+        <div class="form_time">
+          <div>
+            <label for="start">Start Time:</label>
+            <input type="time" placeholder="Start Time" name="start">
+          </div>
+          <div>
+            <label for="end">End Time:</label>
+            <input type="time" placeholder="End Time" name="end">
+          </div>
+        </div>
+        <div class="form_tardy">
+          <div>
+            <label for="tardy">Tardies?</label>
+            <input type="checkbox" placeholder="Tardies" name="tardy" onclick="validate(this)">
+          </div>
+          <div id="tardy_delay">
+            <label for="tardy">Tardy Delay:</label>
+            <input type="number" placeholder="Enter Tardy Delay" name="tardy_delay">
+          </div>
+        </div>
+        <div class="student_section">
+          <template id="student_template">
+            <div class="new_student">
+              <div class="remove_student" onclick="remove_student(this)">-</div>
+              <input type="text" placeholder="Enter Student Name">
+            </div>
+          </template>
+          <input type="text" name="all_students" style="display:none" id="all_students_form">
+          <h3>Add Students</h3>
+          <div class="add_students noSelect" onclick="add_student()">+</div>
+          <div class="student_container">
+            <div class="new_student">
+              <div class="remove_student" onclick="remove_student(this)">-</div>
+              <input type="text" placeholder="Enter Student Name">
+            </div>
+          </div>
+          <input type="text" name="all_questions" style="display:none" id="all_questions_form">
+          <h3>Form Questions</h3>
+          <div class="add_students noSelect" onclick="add_question()">+</div>
+          <template id="question_template">
+            <div class="question_box questions_created">
+              <input type="text" placeholder="Write your Question" class="question_input">
+              <select class="question_select">
+                <option disabled selected> Question Type</option>
+                <option value="short">Short Answer</option>
+                <option value="long">Long Answer</option>
+              </select>
+              <button type="button" class="question_btn question_btn-red" onclick="remove_student(this)">Delete</button>
+            </div>
+          </template>
+          <div class="question_container">
+            <div class="question_box">
+              <input type="text" value="Pincode:" readonly>
+              <input type="text" value="Short Answer" readonly>
+              <button type="button" class="question_btn question_btn-grey">Can't Delete</button>
+            </div>
+            <div class="question_box">
+              <input type="text" value="Who are you:" readonly>
+              <input type="text" value="Dropdown" readonly>
+              <button type="button" class="question_btn question_btn-grey">Can't Delete</button>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="add_class_btn" onclick="submit_class()">Create</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup_bg" id="code_bg">
+    <div class="new_popup" id="code_popup">
+      <div class="popup_close" onclick="remove_popup(this)">
+        &times;
+      </div>
+      <h1>Form Pincode</h1>
+      <div class="pincode_container">
+        <div style="display:none" id="current_class_pin"></div>
+        <div class="pincode_large" id="pincode_changing">
+          54321
+        </div>
+        <button class="pin_change" onclick="change_pin()">Change Pin</button>
+      </div>
+    </div>
+  </div>
+  <div class="side-bar">
+    <div onclick="window.location.pathname = ('/')" style="cursor: pointer">
+      <img src="../static/img/schedule.png" />
+      <div>Check-In</div>
+    </div>
+    <hr style="
+          height: 1px;
+          background-color: white;
+          border: none;
+          margin-top: 20px;
+        " />
+    {% if "user" in user %}
+    <div style="margin-top: 25px">Welcome, {{user["user"]}}!</div>
+    {% endif %}
+    <div class="nav_el" onclick="window.location.pathname = ('/classes')">
+      <img src="../static/img/classes.png" />
+      <div>Classes</div>
+    </div>
+    <div class="nav_el" onclick="window.location.pathname = ('/sheets')">
+      <img src="../static/img/sheet.png" />
+      <div>Sheets</div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="classes">
+      {% if class_info %}
+      {% for classroom in class_info %}
+      <div class="main_class">
+        <h1 class="class_title">{{classroom[0].name}}</h1>
+        <div class="class_stats">
+          <div><img src="../static/img/students.png">
+            <p>{{classroom[1]}}</p>
+          </div>
+          <div><img src="../static/img/attendance.png">
+            <p>90%</p>
+          </div>
+        </div>
+        <hr>
+        <div class="class_btns">
+          <div onclick="code_popup('{{classroom[0].pin}}', '{{classroom[0].id}}')" id="click_code">Pincode</div>
+          <div onclick="window.location.pathname = ('/form/{{classroom[0].id}}')">Form</div>
+        </div>
+        <hr>
+        <div class="class_edit">
+          <div><img src="../static/img/edit.png"></div>
+          <form method="POST">
+            <button type="submit" value="{{classroom[0].id}}" name="delete_class"><img
+                src="../static/img/delete.png"></button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <div class="main_class" style="height: 325px;display:flex;justify-content:center;align-items:center;">
+        You do not have a class, please create one!
+      </div>
+      {% endif %}
+    </div>
+    <div class="add_class" onclick="add_popup()">
+      <div class="add-len"></div>
+      <div class="add-len"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../static/js/class_create.js"></script>
+    <script src="../static/js/base.js"></script>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{classroom.name}} Form</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/signup.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/classes.css" />
+</head>
+
+<body>
+    <div class="side-bar">
+        <div onclick="window.location.pathname = ('/')" style="cursor: pointer">
+            <img src="../static/img/schedule.png" />
+            <div>Check-In</div>
+        </div>
+    </div>
+    <div class="main register_main">
+        <div class="sign_up" style="width:500px">
+            <div class="sign_up-top">{{classroom.name}}<br>
+                <p style="font-size: 16px;margin-bottom: -5px;margin-top: 5px;">By {{teacher.nickname}}</p>
+            </div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="form_flash">
+                <div class="form_flash-close" onclick="remove_popup(this)">
+                    &times;
+                </div>
+                <div class="form_flash-msg">
+                    {{message}}
+                </div>
+                <script>
+                    function remove_popup(times) {
+                        times.parentNode.remove();
+                    }
+                </script>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <form method="POST">
+                <input type="text" name="pin" placeholder="Pincode" />
+                <select class="timezone_form" name="student" style="width: 59%;">
+                    <option value="" disabled selected>Who are you</option>
+                    {% for student in students %}
+                    <option value="{{student.name}}">{{student.name}}</option>
+                    {% endfor %}
+                </select>
+                {% for question in questions %}
+                {% if question.type == "short" %}
+                <input type="text" name="{{question.question}}" placeholder="{{question.question}}">
+                {% else %}
+                <textarea placeholder="{{question.question}}" class="form_textarea"
+                    name="{{question.question}}"></textarea>
+                {% endif %}
+                {% endfor %}
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script src="../static/js/base.js"></script>
+</body>
+
+</html>

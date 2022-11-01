@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Home</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/home.css" />
+</head>
+
+<body>
+  <section class="top">
+    <div class="logo" onclick="window.location.pathname = ('/')">
+      <div class="logo_img"><img src="../static/img/schedule.png" /></div>
+      <div class="logo_text">Check-In</div>
+    </div>
+    <nav class="top_nav">
+      <div class="nav_btns">About</div>
+      <div class="nav_btns" onclick="window.location.pathname = ('/classes')">
+        Dashboard
+      </div>
+      {% if user%}
+      <div class="signup_btn" onclick="window.location.pathname = ('/logout')">
+        Logout
+      </div>
+      {% else %}
+      <div class="signup_btn" onclick="window.location.pathname = ('/signup')">
+        Signup
+      </div>
+      {% endif %}
+      {% if not user %}
+      <div class="login_btn" onclick="window.location.pathname = ('/login')">
+        Login
+      </div>
+      {% endif %}
+    </nav>
+  </section>
+  <section class="landing">
+    <div class="landing_info">
+      <div class="info-intro">Your automatic helper</div>
+      <div class="info-title">Make Attendance Easy</div>
+      <hr />
+      <div class="info-desc">
+        Check-In lets students do their own attendance in an organized fashion
+      </div>
+      <ul>
+        <li>Efficient</li>
+        <li>Organized</li>
+        <li>Secure</li>
+        <li>Adaptable</li>
+      </ul>
+      <button class="info-join" onclick="window.location.pathname = ('/signup')">
+        Join Now
+      </button>
+    </div>
+    <div class="landing_attention">
+      <img src="../static/img/teachers.jpg" />
+      <div class="attention_text">Make It Better</div>
+    </div>
+  </section>
+  <div class="background_circles">
+    <div class="top_circle"></div>
+    <div class="bottom_circle"></div>
+  </div>
+  <div class="bg_left">
+    <div class="bg_rectangle"></div>
+    <div class="bg_cover"></div>
+    <div class="bg_rec_circle"></div>
+  </div>
+</body>
+
+</html>

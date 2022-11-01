@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sheets</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/signup.css" />
+  <link rel="stylesheet" type="text/css" href="../static/css/classes.css" />
+  <link rel="stylesheet" type="text/css" href="../static/css/sheets.css" />
+</head>
+
+<body>
+  <div class="side-bar">
+    <div onclick="window.location.pathname = ('/')" style="cursor: pointer">
+      <img src="../static/img/schedule.png" />
+      <div>Check-In</div>
+    </div>
+    <hr style="
+          height: 1px;
+          background-color: white;
+          border: none;
+          margin-top: 20px;
+        " />
+    <div class="nav_el" onclick="window.location.pathname = ('/classes')">
+      <img src="../static/img/classes.png" />
+      <div>Classes</div>
+    </div>
+    <div class="nav_el" onclick="window.location.pathname = ('/sheets')">
+      <img src="../static/img/sheet.png" />
+      <div>Sheets</div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <div class="main">
+    <div class="sheets_nav">
+      <div>Start: <span id="start_time" style="border: none;">000</span></div>
+      <div>End: <span id="end_time" style="border: none;">000</span></div>
+      <select class="class_select" onchange="changeClass(this)">
+        {% for class in classes %}
+        <option value="{{class.id}}">{{class.name}}</option>
+        {% endfor %}
+      </select>
+      <input class="date_select" type="date" id="date_select" onchange="changeDate()">
+      <img src="../static/img/print.png" style="width:30px;cursor:pointer;" onclick="print_el()">
+    </div>
+    <div class="sheets_data">
+      <div class="sheets_attendance">
+        <table cellspacing="0" cellpadding="0">
+          <thead>
+            <tr id="attendance_head">
+              <th>Name</th>
+              <th>Attendance</th>
+              <th>Time Submitted</th>
+            </tr>
+          </thead>
+          <tbody class="attendance_body" id="attendance_body">
+          </tbody>
+        </table>
+      </div>
+      <div class="sheets_charts">
+        <div id="chart"></div>
+        <div id="chart_2">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="../static/js/sheets_get.js"></script>
+</body>
+
+</html>
